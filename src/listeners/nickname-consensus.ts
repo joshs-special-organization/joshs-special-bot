@@ -1,7 +1,9 @@
 import client from "../bot";
 
+import { setIntendedNickname } from "../functions/nickname-consensus";
+
 client.on("guildMemberUpdate", async (oldMember, newMember) => {
-	console.log("someone changed nickname")
+  setIntendedNickname(newMember);
 })
 
 export default client;

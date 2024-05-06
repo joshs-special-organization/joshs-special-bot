@@ -4,4 +4,4 @@ export * as name from "./nickname-consensus/name"
 // export * as play from "./music_player/play"
 // export * as msuciconfig from "./music_player/musicconfig"
 
-export * as refreshcommands from "./refreshcommands"
+export * as refreshcommands from "./refresh-commands"

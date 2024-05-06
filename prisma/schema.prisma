@@ -14,10 +14,14 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-model Nickname {
-  id        Int      @id @default(autoincrement())
-  guildId   Int
-  userId    Int
-  nickname  String   @db.VarChar(255)
-  createdAt DateTime @default(now()) @db.Timestamp(6)
+model nickname {
+  guildId       String
+
+  userId        String
+  nickname      String   @db.VarChar(255)
+
+  setByUserId   String
+  createdAt     DateTime @default(now()) @db.Timestamp(6)
+
+  @@id(name: "ruleId", [guildId, userId])
 }
