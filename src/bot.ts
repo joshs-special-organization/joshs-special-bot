@@ -7,18 +7,20 @@ const client = new Client({
 	intents: ["Guilds", "GuildMessages", "DirectMessages", "MessageContent", "GuildModeration"],
 });
 
-client.once("ready", () => console.log("Discord bot is ready! 🤖"));
-client.on("guildCreate", async guild => await deployCommands(guild.id));
-client.on("interactionCreate", async interaction => {
+export default client;
 
-	if (!interaction.isCommand()) return;
+(async _ => {
+	// Wait for client listeners to be loaded, then add remaining and login
+	await import("./listeners")
 
-	commands[interaction.commandName].execute(interaction);
-});
+	client.once("ready", () => console.log("Discord bot is ready! 🤖"));
+	client.on("guildCreate", async guild => await deployCommands(guild.id));
+	client.on("interactionCreate", async interaction => {
 
-client.on("messageCreate", async message => {
+		if (!interaction.isCommand()) return;
 
-})
+		commands[interaction.commandName].execute(interaction);
+	});
 
-
-client.login(config.DISCORD_TOKEN);
+	await client.login(config.DISCORD_TOKEN);
+})()
