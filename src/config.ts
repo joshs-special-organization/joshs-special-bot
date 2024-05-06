@@ -1,6 +1,8 @@
 import dotenv from "dotenv";
+import type { AppEnv } from "./types";
 
-dotenv.config();
+const APP_ENV: AppEnv = "prod";
+dotenv.config({ path: `./${APP_ENV}.env` });
 
 const { DISCORD_TOKEN, DISCORD_CLIENT_ID } = process.env;
 
