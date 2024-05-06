@@ -1,7 +1,7 @@
 {
 	"name": "joshs-special-bot",
 	"private": true,
-	"license": "UNLICENSED",
+	"license": "AGPL-3.0-or-later",
 	"url": "https://github.com/joshs-special-organization/joshs-special-bot",
 	"repository": {
 		"type": "git",
