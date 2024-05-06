@@ -15,8 +15,7 @@
 		"dotenv": "^16.4.5",
 		"tsx": "^4.9.2",
 		"typescript": "^5.4.5",
-		"libsodium-wrappers": "^0.7.9",
-		"typescript": "^5.4.5"
+		"libsodium-wrappers": "^0.7.9"
 	},
 	"devDependencies": {
 		"tsx": "^4.9.2"
