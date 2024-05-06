@@ -1,0 +1,8 @@
+{
+	"dependencies": {
+		"discord.js": "^14.15.2",
+		"dotenv": "^16.4.5",
+		"tsx": "^4.9.2",
+		"typescript": "^5.4.5"
+	}
+}
