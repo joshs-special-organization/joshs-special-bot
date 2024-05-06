@@ -11,8 +11,12 @@
 		"@prisma/client": "5.13.0",
 		"@supabase/supabase-js": "^2.43.1",
 		"discord.js": "^14.15.2",
+		"@discordjs/voice": "^0.16.0",
+		"@discordjs/opus": "^0.8.0",
 		"dotenv": "^16.4.5",
-		"typescript": "^5.4.5"
+		"tsx": "^4.9.2",
+		"typescript": "^5.4.5",
+		"libsodium-wrappers": "^0.7.9"
 	},
 	"devDependencies": {
 		"prisma": "^5.13.0",
