@@ -4,7 +4,7 @@
 ```npm install -g pnpm```
 
 - Install tsx
-```pnpm install -D tsx```
+```pnpm install -g tsx```
 
 - Install other packages
 ```pnpm install```
