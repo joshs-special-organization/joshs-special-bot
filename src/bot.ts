@@ -4,7 +4,7 @@ import { config } from "./config";
 import * as commands from "./commands";
 
 const client = new Client({
-	intents: ["Guilds", "GuildMessages", "DirectMessages", "MessageContent", "GuildModeration"],
+	intents: ["Guilds", "GuildMessages", "DirectMessages", "MessageContent", "GuildModeration", "GuildVoiceStates"],
 });
 export default client;
 
