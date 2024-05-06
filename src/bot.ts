@@ -21,4 +21,4 @@ client.on("messageCreate", async message => {
 })
 
 
-client.login(config.TOKEN);
+client.login(config.DISCORD_TOKEN);

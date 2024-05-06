@@ -3,15 +3,14 @@ import { config } from "./config";
 import * as commands from "./commands";
 
 const commandsData = Object.values(commands).map((command) => command.data);
-
-const rest = new REST({ version: "10" }).setToken(config.TOKEN);
+const rest = new REST({ version: "10" }).setToken(config.DISCORD_TOKEN);
 
 export async function deployCommands(guildId: string) {
 	try {
 		console.log("Started refreshing application (/) commands.");
 
 		await rest.put(
-			Routes.applicationGuildCommands(config.CLIENT_ID, guildId),
+			Routes.applicationGuildCommands(config.DISCORD_CLIENT_ID, guildId),
 			{
 				body: commandsData,
 			}
