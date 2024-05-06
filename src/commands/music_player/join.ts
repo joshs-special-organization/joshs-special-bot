@@ -1,6 +1,4 @@
 import { CommandInteraction, Guild, GuildMember, GuildMemberRoleManager, SlashCommandBuilder } from "discord.js";
-import { deployCommands } from "../../deploy-commands";
-import { getModAdmin } from "../../functions";
 import {DiscordGatewayAdapterCreator, createAudioPlayer, joinVoiceChannel} from "@discordjs/voice"
 import { channels, players, queues, statuses, vcs } from "./dicts";
 import { playSong } from "./play";

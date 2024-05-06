@@ -1,6 +1,4 @@
 import { Channel, CommandInteraction, Guild, GuildMember, GuildMemberRoleManager, SlashCommandBuilder, TextBasedChannel } from "discord.js";
-import { deployCommands } from "../../deploy-commands";
-import { getModAdmin } from "../../functions";
 import { channels, instances, players, proxies, queues, statuses } from "./dicts";
 import { createAudioResource, StreamType, AudioPlayer } from "@discordjs/voice"
 

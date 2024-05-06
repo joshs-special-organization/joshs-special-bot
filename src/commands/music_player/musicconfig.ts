@@ -1,6 +1,6 @@
 import { CommandInteraction, Guild, GuildMember, GuildMemberRoleManager, SlashCommandBuilder } from "discord.js";
 import { deployCommands } from "../../deploy-commands";
-import { getModAdmin } from "../../functions";
+import { isMemberMod } from "../../functions";
 
 
 export const data = new SlashCommandBuilder()
@@ -12,7 +12,7 @@ export const data = new SlashCommandBuilder()
 export async function execute(interaction: CommandInteraction) {
     let member = interaction.member
 
-    if (!getModAdmin(member)) {
+    if (!isMemberMod(member)) {
         interaction.reply({content: "Sorry, you do not have permission", ephemeral: true})
     }
 
