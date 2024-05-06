@@ -2,17 +2,20 @@
 	"name": "joshs-special-bot",
 	"private": true,
 	"license": "UNLICENSED",
-  "url": "https://github.com/joshs-special-organization/joshs-special-bot",
+	"url": "https://github.com/joshs-special-organization/joshs-special-bot",
 	"repository": {
-		"type" : "git",
-		"url" : "https://github.com/joshs-special-organization/joshs-special-bot.git"
+		"type": "git",
+		"url": "https://github.com/joshs-special-organization/joshs-special-bot.git"
 	},
 	"dependencies": {
+		"@prisma/client": "5.13.0",
+		"@supabase/supabase-js": "^2.43.1",
 		"discord.js": "^14.15.2",
 		"dotenv": "^16.4.5",
 		"typescript": "^5.4.5"
 	},
 	"devDependencies": {
+		"prisma": "^5.13.0",
 		"tsx": "^4.9.2"
 	}
 }

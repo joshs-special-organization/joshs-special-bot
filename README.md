@@ -1,12 +1,20 @@
 ## Setup
-- Create your own .env file with your dev discord bot's client and token
-- Install pnpm via npm
+
+- Create your own `.env` file in the root, setting the following variables:
+
+  - `DISCORD_CLIENT_ID`
+  - `DISCORD_TOKEN`
+  - The below keys can be found in the ORM section of the "Connect to your project" modal
+  - `DATABASE_URL` (recommended to append `?pgbouncer=true` to the end for a better prisma CLI experience)
+  - `DIRECT_URL`
+
+- Install pnpm globally via npm
 ```npm install -g pnpm```
 
-- Install tsx
+- Install tsx globally
 ```pnpm install -g tsx```
 
-- Install other packages
+- Install project dependancies
 ```pnpm install```
 
 
