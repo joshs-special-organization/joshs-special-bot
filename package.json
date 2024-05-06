@@ -1,8 +1,18 @@
 {
+	"name": "joshs-special-bot",
+	"private": true,
+	"license": "UNLICENSED",
+  "url": "https://github.com/joshs-special-organization/joshs-special-bot",
+	"repository": {
+		"type" : "git",
+		"url" : "https://github.com/joshs-special-organization/joshs-special-bot.git"
+	},
 	"dependencies": {
 		"discord.js": "^14.15.2",
 		"dotenv": "^16.4.5",
-		"tsx": "^4.9.2",
 		"typescript": "^5.4.5"
+	},
+	"devDependencies": {
+		"tsx": "^4.9.2"
 	}
 }
