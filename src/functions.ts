@@ -1,18 +1,10 @@
 import { APIInteractionGuildMember, GuildMember, GuildMemberRoleManager } from "discord.js";
 
-export function getModAdmin(member: GuildMember | APIInteractionGuildMember | null) {
-    const MOD_NAME = "jsmod"
-    if (member === null) {
-        return false;
-    }
-    let roleman = member.roles as GuildMemberRoleManager
-    let valid = false
-    roleman.cache.each((role) => {
-        if (role.name === MOD_NAME) {
-            valid = true
-        }
-    })
-    return valid;
-} 
+export function isMemberMod(member: GuildMember | APIInteractionGuildMember | null) {
+	const MOD_NAME = "jsmod"
+	if (!member) return false;
 
-
+	let roles = member.roles as GuildMemberRoleManager
+	let isMod = roles.cache.some(role => role.name == MOD_NAME)
+	return isMod;
+}
