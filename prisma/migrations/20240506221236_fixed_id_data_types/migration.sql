@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "nickname" ALTER COLUMN "guildId" SET DATA TYPE TEXT,
+ALTER COLUMN "userId" SET DATA TYPE TEXT;

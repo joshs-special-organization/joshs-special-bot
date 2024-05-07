@@ -1,26 +1,22 @@
-import { Message } from "discord.js";
-import { messageHandler } from "../src/handlers";
+import { CommandInteraction } from "discord.js";
+import { execute } from "../src/commands/ping";
 
-describe("muter", () => {
-  const message = ({
+describe("ping", () => {
+  const commandInteraction = ({
+    reply: jest.fn(),
     channel: {
-      send: jest.fn(),
+      send: jest.fn()
     },
-    content: "",
-    author: {
-      bot: false,
-    },
-  } as unknown) as Message;
+  } as unknown) as CommandInteraction;
 
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  it("it should send Hello, World!", async () => {
-    message.content = "!hello";
-    await messageHandler(message);
-    expect(message.channel.send).toHaveBeenCalledWith("Hello, World!");
-    expect(message.channel.send).not.toHaveBeenCalledWith("Help Command");
+  it("it should send pong", async () => {
+    await execute(commandInteraction);
+    expect(commandInteraction.reply).toHaveBeenCalledTimes(1);
+    expect(commandInteraction.reply).toHaveBeenCalledWith({ content: "pong" });
+    expect(commandInteraction.reply).not.toHaveBeenCalledWith({ content: "some bad response" });
   });
-  
 });
