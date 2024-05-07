@@ -1,3 +1,5 @@
+## UR UR UR UR UR UR URURURURURUR UR UR UR UR UR UR UR UR UR UR UR UR UR UR UR UR URURURURURURURURURUR
+
 ## Setup
 
 - Create your own `.env` file in the root, setting the following variables:
@@ -33,3 +35,5 @@ If you edit the schema, apply your edit as a migration with this command (it wil
 ```tsx src/bot.ts```\
 **or**\
 ```tsx watch src/bot.ts``` (restarts upon file changes)
+
+
