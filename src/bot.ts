@@ -16,9 +16,7 @@ export default client;
 		console.log(`Running in ${process.env.NODE_ENV} mode...`)
 		console.log("Discord bot is ready! 🤖");
 	});
-
 	client.on("guildCreate", async guild => await deployCommands(guild.id));
-
 	client.on("interactionCreate", async interaction => {
 		if (!interaction.isCommand()) return;
 		commands[interaction.commandName].execute(interaction);
