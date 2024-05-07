@@ -49,11 +49,11 @@ export const data = new SlashCommandBuilder()
 
 
 export async function execute(interaction: ChatInputCommandInteraction) {
-	let mentionedUser = interaction.options.getMember('user') as GuildMember | null;
+	let mentionedUser = interaction.options.getMember('user') as GuildMember;
 	let member = interaction.member as GuildMember | null;
 	let guild = interaction.guild
 
-	if (!mentionedUser || !member || !guild)
+	if (!member || !guild)
 		return interaction.reply({ content: "uhh uhhmmm uhh", ephemeral: true })
 
 	let oldNickname;
