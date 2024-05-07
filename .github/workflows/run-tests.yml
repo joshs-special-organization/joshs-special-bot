@@ -1,8 +1,25 @@
 name: Run Test Suite
-on: push
+
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  run-tests:
-    name: Run Discord Tests
+  test:
     runs-on: ubuntu-latest
 
+    services:
+      docker:
+        image: docker:stable
+        options: --privileged
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Build Docker images
+      run: docker-compose build ci
+
+    - name: Run tests
+      run: docker-compose run ci
