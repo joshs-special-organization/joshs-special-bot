@@ -1,4 +1,7 @@
-![Tests Status](https://github.com/joshs-special-organization/joshs-special-bot/actions/workflows/tests.yml/badge.svg?branch=database)
+![Typescript Supported](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+[![Run Test Suite](https://github.com/joshs-special-organization/joshs-special-bot/actions/workflows/tests.yml/badge.svg)](https://github.com/joshs-special-organization/joshs-special-bot/actions/workflows/tests.yml)
+![DiscordJS Version](https://img.shields.io/github/package-json/dependency-version/joshs-special-organization/joshs-special-bot/discord.js?logo=discord)
+![Jest Version](https://img.shields.io/github/package-json/dependency-version/joshs-special-organization/joshs-special-bot/jest?logo=jest)
 
 ## Setup
 
