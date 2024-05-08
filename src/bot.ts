@@ -19,7 +19,7 @@ export default client;
 	client.on("guildCreate", async guild => await deployCommands(guild.id));
 	client.on("interactionCreate", async interaction => {
 		if (!interaction.isCommand()) return;
-		commands[interaction.commandName].execute(interaction);
+    commands[interaction.commandName].execute(interaction);
 	});
 
 	await client.login(config.DISCORD_TOKEN);

@@ -1,0 +1,15 @@
+# Node Management
+node_modules
+package-lock.json
+pnpm-lock.yaml
+.pnpm-store
+
+# Git Files
+.git
+.gitignore
+*.md
+
+# Docker Config
+.dockerignore
+docker-compose.yml
+Dockerfile
