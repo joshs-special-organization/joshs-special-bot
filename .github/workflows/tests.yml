@@ -21,6 +21,9 @@ jobs:
     - name: Build Docker images
       run: docker-compose build --no-cache ci
 
+    - name: Install Node modules
+      run: docker-compose run ci sh -c "pnpm install"
+
     - name: Run tests
       run: docker-compose run ci
 
