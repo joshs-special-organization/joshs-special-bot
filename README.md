@@ -1,4 +1,5 @@
 ![Typescript Supported](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![PNPM](https://img.shields.io/badge/pnpm-%234a4a4a.svg?style=for-the-badge&logo=pnpm&logoColor=f69220)
 [![Run Test Suite](https://github.com/joshs-special-organization/joshs-special-bot/actions/workflows/tests.yml/badge.svg)](https://github.com/joshs-special-organization/joshs-special-bot/actions/workflows/tests.yml)
 ![DiscordJS Version](https://img.shields.io/github/package-json/dependency-version/joshs-special-organization/joshs-special-bot/discord.js?logo=discord)
 ![Jest Version](https://img.shields.io/github/package-json/dependency-version/joshs-special-organization/joshs-special-bot/jest?logo=jest)
