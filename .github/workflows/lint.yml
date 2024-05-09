@@ -41,8 +41,8 @@ jobs:
         run: pnpm install
 
       - name: Prettier
-        run: npm run format
+        run: pnpm run format
 
       - name: Lint
-        run: npm run lint
+        run: pnpm run lint
 
