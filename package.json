@@ -15,9 +15,12 @@
     "test": "jest",
     "start": "tsx ./src/bot.ts",
     "lint": "eslint ./",
-    "format": "prettier --check ./",
-    "format:fix": "prettier --write ./",
-    "prepare": "husky"
+    "format": "prettier --check ./"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "src/**/*.{js,ts,tsx}": [
@@ -26,11 +29,6 @@
     "./src/**": [
       "prettier --write ./"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "dependencies": {
     "@discordjs/opus": "^0.8.0",
