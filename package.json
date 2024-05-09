@@ -16,14 +16,15 @@
     "start": "tsx ./src/bot.ts",
     "lint": "eslint ./",
     "format": "prettier --check ./",
-    "format:fix": "prettier --write ./"
+    "format:fix": "prettier --write ./",
+    "prepare": "husky"
   },
   "lint-staged": {
     "src/**/*.{js,ts,tsx}": [
-      "eslint --ext .tsx --ext .ts --ext .ks ./src --fix"
+      "eslint --ext .tsx --ext .ts --ext .js ./src --fix"
     ],
     "./src/**": [
-      "prettier --write ."
+      "prettier --write ./"
     ]
   },
   "husky": {
