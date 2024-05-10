@@ -23,6 +23,6 @@ export async function execute(interaction: CommandInteraction) {
     await deployCommands(interaction.guildId)
     return interaction.reply({
         content: 'Refreshed commands successfully',
-        ephemerl: true,
+        ephemeral: true,
     })
 }
