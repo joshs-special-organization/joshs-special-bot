@@ -1,0 +1,15 @@
+# Yaml Configs
+*.yml
+*.yaml
+
+# Environemts
+.env
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# License
+LICENSE
+
+# Readme
+README.md
