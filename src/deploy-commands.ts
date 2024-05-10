@@ -21,3 +21,4 @@ export async function deployCommands(guildId: string) {
         console.error(error)
     }
 }
+

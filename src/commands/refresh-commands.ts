@@ -16,13 +16,13 @@ export async function execute(interaction: CommandInteraction) {
         })
     }
 
-    if (interaction.guild_id == null) {
+    if (interaction.guildId == null) {
         console.log('Error: guild_id is null')
         return
     }
-    await deployCommands(interaction.guild_id)
+    await deployCommands(interaction.guildId)
     return interaction.reply({
         content: 'Refreshed commands successfully',
-        ephemeral: true,
+        ephemerl: true,
     })
 }

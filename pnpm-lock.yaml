@@ -29,6 +29,9 @@ importers:
       dotenv:
         specifier: ^16.4.5
         version: 16.4.5
+      prisma:
+        specifier: ^5.13.0
+        version: 5.13.0
       tsx:
         specifier: ^4.9.2
         version: 4.9.4
@@ -66,9 +69,6 @@ importers:
       prettier-plugin-organize-imports:
         specifier: ^3.2.4
         version: 3.2.4(prettier@3.2.5)(typescript@5.4.5)
-      prisma:
-        specifier: ^5.13.0
-        version: 5.13.0
       ts-jest:
         specifier: ^29.1.2
         version: 29.1.2(@babel/core@7.24.5)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.24.5))(jest@29.7.0(@types/node@13.13.52))(typescript@5.4.5)
