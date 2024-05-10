@@ -40,9 +40,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Prettier
-        run: pnpm run format
+      - name: Validate Formatting
+        run: pnpm run format:check
 
-      - name: Lint
-        run: pnpm run lint
+      - name: Validate Linting
+        run: pnpm run lint:check
 
