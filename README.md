@@ -44,9 +44,9 @@ If you edit the schema, apply your edit as a migration with this command (it wil
 ```pnpm install```
 
 4. Start the bot on your local machine using:\
-```tsx src/bot.ts```\
+```pnpm run start```\
 **or**\
-```tsx watch src/bot.ts``` (restarts upon file changes)
+```pnpm run start:watch``` (restarts upon file changes)
 
 ### Docker Deployment
 

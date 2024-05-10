@@ -1,7 +1,7 @@
-export let channels = {}
-export let vcs = {}
-export let players = {}
-export let queues = {}
-export let instances = {}
-export let proxies = {}
-export let statuses = {}
+export const channels = {}
+export const vcs = {}
+export const players = {}
+export const queues = {}
+export const instances = {}
+export const proxies = {}
+export const statuses = {}
