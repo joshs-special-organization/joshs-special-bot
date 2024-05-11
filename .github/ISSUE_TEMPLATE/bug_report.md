@@ -3,8 +3,7 @@ name: Bug report
 about: Create a report to help us improve
 title: ''
 labels: ''
-assignees: 
-
+assignees:
 ---
 
 **Describe the bug**
@@ -12,6 +11,7 @@ A clear and concise description of what the bug or unexpected behavior is.
 
 **To Reproduce**
 Steps to reproduce the behavior:
+
 1. Start robot with docker compose logs '...'
 2. Type in command or message '...'
 3. Console prints error '...'

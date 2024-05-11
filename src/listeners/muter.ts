@@ -1,7 +1,7 @@
-import client from "../bot";
+import client from '../bot'
 
-client.on("messageCreate", async message => {
-	console.log("im a muter :)")
+client.on('messageCreate', async () => {
+    console.log('im a muter :)')
 })
 
-export default client;
+export default client
