@@ -20,7 +20,7 @@
     "@discordjs/voice": "^0.16.0",
     "@prisma/client": "5.13.0",
     "@supabase/supabase-js": "^2.43.1",
-    "@types/node": "^13.11.1",
+    "@types/node": "^20.12.11",
     "discord.js": "^14.15.2",
     "dotenv": "^16.4.5",
     "tsx": "^4.9.2",
