@@ -10,7 +10,7 @@ const rest = new REST({ version: '10' }).setToken(config.DISCORD_TOKEN)
 export async function deployCommands(guildId: string | null) {
     try {
         if (guildId === null) {
-            return;
+            return
         }
         console.log('Started refreshing application (/) commands.')
 
