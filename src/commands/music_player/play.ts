@@ -43,7 +43,7 @@ export async function execute(interaction: CommandInteraction) {
             .then((response) => response.json())
             .then((data) => addAudioElement(data, guild))
             .catch((_) => {
-                (channels[guild] as TextBasedChannel).send('Unexpected Error')
+                ;(channels[guild] as TextBasedChannel).send('Unexpected Error')
             })
 
         return interaction.reply({ content: 'Video Found' })
@@ -91,7 +91,7 @@ function addAudioElement(data, guild) {
             }
         }
     } else {
-        (channels[guild] as TextBasedChannel).send('Unexpected Error')
+        ;(channels[guild] as TextBasedChannel).send('Unexpected Error')
     }
 }
 
@@ -135,7 +135,7 @@ export async function playSong(guild) {
                     str = stream
                 })
                 .catch((_) => {
-                    (channels[guild] as TextBasedChannel).send(
+                    ;(channels[guild] as TextBasedChannel).send(
                         "Could't fetch the audio"
                     )
                 })
@@ -150,10 +150,10 @@ export async function playSong(guild) {
             ;(channels[guild] as TextBasedChannel).send('NOW PLAYING: ' + title)
             ;(channels[guild] as TextBasedChannel).send(thumb)
         } else {
-            (channels[guild] as TextBasedChannel).send('Added to queue')
+            ;(channels[guild] as TextBasedChannel).send('Added to queue')
         }
     } else {
-        (channels[guild] as TextBasedChannel).send('Queue empty')
+        ;(channels[guild] as TextBasedChannel).send('Queue empty')
         ;(players[guild] as AudioPlayer).pause()
         statuses[guild] = 'idle'
     }
