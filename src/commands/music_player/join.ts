@@ -8,7 +8,7 @@ import {
     GuildMember,
     SlashCommandBuilder,
 } from 'discord.js'
-import { channels, players, queues, statuses, vcs } from './dicts'
+import { channels, players, queues, statuses, vcs } from '../../functions/dicts'
 import { playSong } from './play'
 
 export const data = new SlashCommandBuilder()

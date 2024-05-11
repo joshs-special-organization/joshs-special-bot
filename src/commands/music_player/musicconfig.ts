@@ -1,5 +1,5 @@
 import { CommandInteraction, SlashCommandBuilder } from 'discord.js'
-import { isMemberMod } from '../../functions'
+import { isMemberMod } from '../../common_functions'
 
 export const data = new SlashCommandBuilder()
     .setName('musicconfig')

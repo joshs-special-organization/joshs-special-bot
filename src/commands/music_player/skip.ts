@@ -1,5 +1,5 @@
 import { CommandInteraction, SlashCommandBuilder } from 'discord.js'
-import { statuses } from './dicts'
+import { statuses } from '../../functions/dicts'
 import { playSong } from './play'
 
 export const data = new SlashCommandBuilder()

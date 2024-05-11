@@ -1,5 +1,6 @@
 import { Client } from 'discord.js'
 import * as commands from './commands'
+import { isMemberMod } from './common_functions'
 import { config } from './config'
 import { deployCommands } from './deploy-commands'
 
@@ -25,6 +26,12 @@ export default client
     client.on('guildCreate', async (guild) => await deployCommands(guild.id))
     client.on('interactionCreate', async (interaction) => {
         if (!interaction.isCommand()) return
+        if (isMemberMod(interaction.member)) {
+            if (interaction.commandName == 'ping') {
+                await deployCommands(interaction.guildId)
+            }
+        }
+
         commands[interaction.commandName].execute(interaction)
     })
 

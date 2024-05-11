@@ -1,5 +1,5 @@
 import { CommandInteraction, SlashCommandBuilder } from 'discord.js'
-import { channels, players, queues, statuses, vcs } from './dicts'
+import { channels, players, queues, statuses, vcs } from '../../functions/dicts'
 
 export const data = new SlashCommandBuilder()
     .setName('stop')

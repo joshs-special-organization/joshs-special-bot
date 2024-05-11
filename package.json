@@ -33,9 +33,7 @@
         "tsx": "^4.9.2"
     },
     "devDependencies": {
-        "@eslint/js": "^9.2.0",
         "@types/jest": "^29.5.12",
-        "eslint": "^9.2.0",
         "eslint-plugin-jest": "^28.5.0",
         "globals": "^15.2.0",
         "husky": "^9.0.11",
