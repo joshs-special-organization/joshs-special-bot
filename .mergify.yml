@@ -3,8 +3,8 @@ pull_request_rules:
     description: Merge when PR passes all branch protection and has label automerge
     conditions:
       - '#approved-reviews-by>=1'
-      - check-success="Run Test Suite"
-      - check-success="Lint"
+      - check-success="Analyze (javascript-typescript)"
+      - check-success="cache-and-install"
       - check-success="CodeQL"
     actions:
       merge: 
