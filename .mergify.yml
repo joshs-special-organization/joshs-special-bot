@@ -1,0 +1,20 @@
+pull_request_rules:
+  - name: Automatic merge
+    description: Merge when PR passes all branch protection and has label automerge
+    conditions:
+      - '#approved-reviews-by>=1'
+      - check-success="Analyze (javascript-typescript)"
+      - check-success="cache-and-install"
+      - check-success="CodeQL"
+    actions:
+      merge: 
+  - name: Ping PR author when conflicting
+    description: Warn the pull request author when their PR are conflicting
+    conditions:
+      - conflict
+      - '-closed'
+    actions:
+      comment:
+        message: >
+          Oi, {{author}} your PR is conflicting and needs to be updated to be
+          merged

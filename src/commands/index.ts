@@ -6,5 +6,4 @@ export * as musicconfig from "./music_player/musicconfig"
 export * as stop from "./music_player/stop"
 export * as skip from "./music_player/skip"
 
-export * as refreshcommands from "./refresh-commands"
 export * from "./muter"
