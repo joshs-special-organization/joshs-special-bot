@@ -5,23 +5,32 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+    provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+    provider  = "postgresql"
+    url       = env("DATABASE_URL")
+    directUrl = env("DIRECT_URL")
 }
 
 model nickname {
-  guildId       String
+    guildId String
 
-  userId        String
-  nickname      String   @db.VarChar(255)
+    userId   String
+    nickname String @db.VarChar(255)
 
-  setByUserId   String
-  createdAt     DateTime @default(now()) @db.Timestamp(6)
+    setByUserId String
+    createdAt   DateTime @default(now()) @db.Timestamp(6)
 
-  @@id(name: "ruleId", [guildId, userId])
+    @@id(name: "ruleId", [guildId, userId])
+}
+
+model muteRule {
+    createdAt String
+    forId     String
+    creatorId String
+    phrase    String
+
+    @@unique([creatorId])
 }
