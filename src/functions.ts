@@ -43,7 +43,9 @@ export async function getRulesMadeFor(userId: string) {
 }
 
 export async function getRuleMadeBy(userId: string) {
-    const data = await prisma.muteRule.findFirst({ where: { creatorId: userId } })
+    const data = await prisma.muteRule.findFirst({
+        where: { creatorId: userId },
+    })
 
     if (!data) return { error: 'No rule found!' }
 
