@@ -55,7 +55,7 @@ The robot can be run within a [docker](https://www.docker.com/) container using 
 1. Ensure you have [docker installed](https://www.docker.com/get-started/) and running first.
 
 2. To run a robot, build and run it:
-   1. ```docker-compose build <ci/deploy>```
-   2. ```docker-compose run <ci/deploy>```
+   1. ```docker compose build <ci/deploy>```
+   2. ```docker compose run <ci/deploy>```
 
 You will know you did everything right when your robot will be connected to discord and running! :tada:
