@@ -27,10 +27,11 @@ model nickname {
 }
 
 model muteRule {
+    guildId   String
     createdAt String
     forId     String
     creatorId String
     phrase    String
 
-    @@unique([creatorId])
+    @@unique([creatorId, guildId])
 }
