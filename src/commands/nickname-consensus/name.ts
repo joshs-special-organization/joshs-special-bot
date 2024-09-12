@@ -35,6 +35,8 @@ export const data = new SlashCommandBuilder()
                         'Their new nickname until someone changes it'
                     )
                     .setRequired(true)
+                    .setMinLength(2)
+                    .setMaxLength(30)
             )
     )
 
