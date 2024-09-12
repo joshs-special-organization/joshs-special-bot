@@ -6,7 +6,10 @@ const TIMEOUT_MINS = 5
 client.on('messageCreate', async (interaction) => {
     try {
         if (interaction.author.bot) return
-        const rules = await getRulesMadeFor(interaction.author.id)
+        const rules = await getRulesMadeFor(
+            interaction.author.id,
+            interaction.guild?.id ?? ''
+        )
 
         if (
             rules.error != null ||
@@ -21,7 +24,7 @@ client.on('messageCreate', async (interaction) => {
                 const member = await interaction.member
                     ?.timeout(
                         TIMEOUT_MINS * 60 * 1000,
-                        'saying `${rule.phrase}` thanks to <@${rule.creatorId}>'
+                        `ALMIGHTY MUTED for saying "${rule.phrase}"`
                     )
                     .catch((err) => {
                         console.log(err)
