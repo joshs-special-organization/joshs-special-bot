@@ -36,8 +36,8 @@ export async function execute(interaction: CommandInteraction) {
     if (match && match[1]) {
         const videoID = match[1]
 
-        const instance = instances[guild] ?? 'pipedapi.adminforge.de'
-        // let proxy = proxies[guild] ?? "pipedimg.adminforge.de";
+        const instance = instances[guild] ?? 'api.piped.private.coffee'
+        // let proxy = proxies[guild] ?? "proxy.piped.private.coffee";
 
         fetch('https://' + instance + '/streams/' + videoID)
             .then((response) => response.json())
@@ -77,7 +77,7 @@ function addAudioElement(data, guild) {
                 const rrr = rr.substring(rr.indexOf('/'))
                 const url =
                     'https://' +
-                    (proxies[guild] ?? 'pipedimg.adminforge.de') +
+                    (proxies[guild] ?? 'proxy.piped.private.coffee') +
                     rrr
 
                 queues[guild].push({
