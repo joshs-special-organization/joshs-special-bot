@@ -28,8 +28,10 @@ export default client
         if (!interaction.isCommand()) return
         if (isMemberMod(interaction.member)) {
             if (interaction.commandName == 'ping') {
-                await (await interaction.guild?.members.fetchMe())?.setNickname("Joshs Special Bot")
-                console.log("Set nickanme");
+                await (
+                    await interaction.guild?.members.fetchMe()
+                )?.setNickname('Joshs Special Bot')
+                console.log('Set nickanme')
                 await deployCommands(interaction.guildId)
             }
         }
