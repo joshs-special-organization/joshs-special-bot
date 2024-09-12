@@ -58,4 +58,4 @@ The robot can be run within a [docker](https://www.docker.com/) container using 
    1. ```docker compose build <ci/deploy>```
    2. ```docker compose run <ci/deploy>```
 
-You will know you did everything right when your robot will be connected to discord and running! :tada:
+You will know you did everything right when your robot will be connected to discord and running!
