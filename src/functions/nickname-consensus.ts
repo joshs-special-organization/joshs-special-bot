@@ -16,8 +16,10 @@ export function getFallbackNickname(member: GuildMember) {
 }
 
 export async function setIntendedNickname(member: GuildMember) {
-    const intendedNickname =
-        (await getIntendedNickname(member)) || getFallbackNickname(member)
+    if (!member.user.bot) {
+        const intendedNickname =
+            (await getIntendedNickname(member)) || getFallbackNickname(member)
 
-    await member.setNickname(intendedNickname, 'Because')
+        await member.setNickname(intendedNickname, 'Because')
+    }
 }
