@@ -26,19 +26,16 @@ export default client
     client.on('guildCreate', async (guild) => await deployCommands(guild.id))
     client.on('interactionCreate', async (interaction) => {
         if (!interaction.isCommand()) return
-        
 
         commands[interaction.commandName].execute(interaction)
     })
     client.on('messageCreate', async (interaction) => {
-        if (interaction.content=="SETUP" && isMemberMod(interaction.member)) {
-            
-                await (
-                    await interaction.guild?.members.fetchMe()
-                )?.setNickname('Joshs Special Bot')
-                console.log('Set nickanme')
-                await deployCommands(interaction.guildId)
-            
+        if (interaction.content == 'SETUP' && isMemberMod(interaction.member)) {
+            await (
+                await interaction.guild?.members.fetchMe()
+            )?.setNickname('Joshs Special Bot')
+            console.log('Set nickanme')
+            await deployCommands(interaction.guildId)
         }
     })
 
