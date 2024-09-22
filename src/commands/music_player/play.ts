@@ -4,15 +4,8 @@ import {
     SlashCommandBuilder,
     TextBasedChannel,
 } from 'discord.js'
-import {
-    channels,
-    instances,
-    players,
-    proxies,
-    queues,
-    statuses,
-} from '../../functions/dicts'
 import { config } from '../../config'
+import { channels, players, queues, statuses } from '../../functions/dicts'
 
 export const data = new SlashCommandBuilder()
     .setName('play')
@@ -43,7 +36,9 @@ export async function execute(interaction: CommandInteraction) {
             .then((response) => response.json())
             .then((data) => addAudioElement(data, guild))
             .catch((_) => {
-                ;(channels[guild] as TextBasedChannel).send('Unexpected Api Error')
+                ;(channels[guild] as TextBasedChannel).send(
+                    'Unexpected Api Error'
+                )
             })
 
         return interaction.reply({ content: 'Video Found' })
