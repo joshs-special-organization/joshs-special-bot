@@ -19,6 +19,8 @@
   - The below keys can be found in the ORM section of the "Connect to your project" modal
   - `DATABASE_URL`, recommended to append `?pgbouncer=true` to the end for a better prisma CLI experience
   - `DIRECT_URL`, for running migrations
+  - `PIPED_URL`, the api domain for piped (for example `pipedapi.kavin.rocks`)
+  - `PIPED_PROXY_URL`, the proxy domain for piped (for example `pipedproxy.kavin.rocks`)
 
 ### Database migrations
 

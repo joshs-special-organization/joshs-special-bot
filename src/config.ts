@@ -2,7 +2,7 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
-const { DISCORD_TOKEN, DISCORD_CLIENT_ID, DATABASE_URL, DIRECT_URL } =
+const { DISCORD_TOKEN, DISCORD_CLIENT_ID, DATABASE_URL, DIRECT_URL, PIPED_URL, PIPED_PROXY_URL } =
     process.env
 
 if (!DISCORD_TOKEN || !DISCORD_CLIENT_ID || !DATABASE_URL || !DIRECT_URL) {
@@ -14,4 +14,6 @@ export const config = {
     DISCORD_CLIENT_ID,
     DATABASE_URL,
     DIRECT_URL,
+    PIPED_URL,
+    PIPED_PROXY_URL
 }

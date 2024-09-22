@@ -12,6 +12,7 @@ import {
     queues,
     statuses,
 } from '../../functions/dicts'
+import { config } from '../../config'
 
 export const data = new SlashCommandBuilder()
     .setName('play')
@@ -36,14 +37,13 @@ export async function execute(interaction: CommandInteraction) {
     if (match && match[1]) {
         const videoID = match[1]
 
-        const instance = instances[guild] ?? 'api.piped.private.coffee'
-        // let proxy = proxies[guild] ?? "proxy.piped.private.coffee";
+        const instance = config.PIPED_URL ?? 'api.piped.private.coffee'
 
         fetch('https://' + instance + '/streams/' + videoID)
             .then((response) => response.json())
             .then((data) => addAudioElement(data, guild))
             .catch((_) => {
-                ;(channels[guild] as TextBasedChannel).send('Unexpected Error')
+                ;(channels[guild] as TextBasedChannel).send('Unexpected Api Error')
             })
 
         return interaction.reply({ content: 'Video Found' })
@@ -77,7 +77,7 @@ function addAudioElement(data, guild) {
                 const rrr = rr.substring(rr.indexOf('/'))
                 const url =
                     'https://' +
-                    (proxies[guild] ?? 'proxy.piped.private.coffee') +
+                    (config.PIPED_PROXY_URL ?? 'proxy.piped.private.coffee') +
                     rrr
 
                 queues[guild].push({
@@ -91,7 +91,7 @@ function addAudioElement(data, guild) {
             }
         }
     } else {
-        ;(channels[guild] as TextBasedChannel).send('Unexpected Error')
+        ;(channels[guild] as TextBasedChannel).send('Unexpected Streams Error')
     }
 }
 
