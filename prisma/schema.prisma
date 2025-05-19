@@ -26,6 +26,13 @@ model nickname {
     @@id(name: "ruleId", [guildId, userId])
 }
 
+model muteEmoji {
+    guildId String
+    emojiId String
+
+    @@id([guildId])
+}
+
 model muteRule {
     guildId   String
     createdAt String
