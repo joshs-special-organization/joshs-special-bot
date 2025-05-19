@@ -19,7 +19,6 @@ export const data = new SlashCommandBuilder()
 export async function execute(interaction: CommandInteraction) {
     try {
         const {
-            member,
             user,
             value: rawEmojiMessage,
         } = interaction.options.get('emoji', true)
@@ -31,7 +30,7 @@ export async function execute(interaction: CommandInteraction) {
             )
         }
 
-        if (!isMemberMod(member as GuildMember)) {
+        if (!isMemberMod(interaction.member)) {
             return await interaction.reply('User is not mod')
         }
 
