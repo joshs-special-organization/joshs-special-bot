@@ -1,10 +1,11 @@
 import client from '../bot'
 import { getMuteEmojiId } from '../functions/emoji-mute-vote'
 
-const TIMEOUT_MINS = 5
+const TIMEOUT_MINS = 2
 const REACTION_THRESHOLD_COUNT = 3
 
 client.on("messageReactionAdd", async (reaction, user) => {
+	console.log("what the sigma")
 	try {
 		if (user.bot) return
 
@@ -17,8 +18,11 @@ client.on("messageReactionAdd", async (reaction, user) => {
 
 		const reactionCount = reaction.message.reactions.cache.find((reaction) => reaction.emoji.id == muteEmojiId)?.count // good lord i do NOT miss javascript what the SIGMA is this
 
-		if (reactionCount != REACTION_THRESHOLD_COUNT) // Use != instead of < or > to prevent multiple mutes for particularly hated persons
+		// Use != instead of < or > to prevent multiple mutes for particularly hated persons
+		if (reactionCount != REACTION_THRESHOLD_COUNT) {
+			console.log(`Count at ${reactionCount}`)
 			return // you're safe... for now.
+		}
 
 		const member = await reaction.message.member
 			?.timeout(

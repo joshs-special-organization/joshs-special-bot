@@ -6,10 +6,10 @@ import { prisma } from '../../prisma-client'
 export const data = new SlashCommandBuilder()
 	.setName('setmuteemoji')
 	.setDescription('Set which emoji the democratic people use to mute people')
-	.addUserOption((opt) =>
+	.addStringOption((opt) =>
 		opt
 			.setName('emoji')
-			.setDescription('The full emoji you want to use (not just the id)')
+			.setDescription('The full emoji you want to use/ (not just the id)')
 			.setRequired(true)
 	)
 

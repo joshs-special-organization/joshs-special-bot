@@ -4,3 +4,4 @@
 
 export * from './muter'
 export * from './nickname-consensus'
+export * from "./emoji-mute-vote"

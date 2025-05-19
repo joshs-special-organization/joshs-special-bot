@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydatabase
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432" # Forward default PostgreSQL port
+    # No restart policy
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    ports:
+      - "8080:8080" # Forward Adminer port
+    depends_on:
+      - db
+    # No restart policy
+
+volumes:
+  db_data:
