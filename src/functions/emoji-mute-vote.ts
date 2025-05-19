@@ -1,10 +1,16 @@
 import { prisma } from '../prisma-client'
 
 export async function getMuteEmojiId(guildId: string) {
-    const record = await prisma.muteEmoji.findFirst({
-        where: {
-            guildId,
-        },
-    })
-    return record?.emojiId
+    try {
+        const record = await prisma.muteEmoji.findFirst({
+            where: {
+                guildId,
+            },
+        })
+
+        return record?.emojiId
+    }
+    catch {
+        return undefined;
+    }
 }
