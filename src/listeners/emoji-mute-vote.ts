@@ -44,7 +44,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
 			await reaction.message.reply(
 				`THIS. IS. DEMOCRACY. MANIFEST.\nThe people have spoken <@${reaction.message.member?.id}>`
 			)
-			await Promise.all([reaction.message.reactions.cache.forEach(async (reaction) => reaction.remove)]);
+			await Promise.all(reaction.message.reactions.cache.map(async (reaction) => reaction.emoji.id == muteEmojiId ? reaction.remove : async () => { }));
 		}
 	} catch (e) {
 		console.log(e)
