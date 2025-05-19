@@ -9,8 +9,7 @@ export async function getMuteEmojiId(guildId: string) {
         })
 
         return record?.emojiId
-    }
-    catch {
-        return undefined;
+    } catch {
+        return undefined
     }
 }
