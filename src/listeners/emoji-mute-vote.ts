@@ -5,7 +5,6 @@ const TIMEOUT_MINS = 2
 const REACTION_THRESHOLD_COUNT = 3
 
 client.on("messageReactionAdd", async (reaction, user) => {
-	console.log("what the sigma")
 	try {
 		if (user.bot) return
 

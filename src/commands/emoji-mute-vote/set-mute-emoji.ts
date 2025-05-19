@@ -1,6 +1,7 @@
-import { CommandInteraction, SlashCommandBuilder, User } from 'discord.js'
+import { CommandInteraction, GuildMember, SlashCommandBuilder, User } from 'discord.js'
 import { userHasRuleCreated } from '../../functions'
 import { prisma } from '../../prisma-client'
+import { isMemberMod } from '../../common_functions'
 
 
 export const data = new SlashCommandBuilder()
@@ -16,11 +17,15 @@ export const data = new SlashCommandBuilder()
 export async function execute(interaction: CommandInteraction) {
 
 	try {
-		const { user, value: rawEmojiMessage } = interaction.options.get("emoji", true)
+		const { member, user, value: rawEmojiMessage } = interaction.options.get("emoji", true)
 		const emojiMatch = /<:(.*):(.*)>/.exec(rawEmojiMessage as string)
 
 		if (user?.bot) {
 			return await interaction.reply("I have created general intelligence")
+		}
+
+		if (!isMemberMod(member as GuildMember)) {
+			return await interaction.reply("User is not mod")
 		}
 
 		if (!emojiMatch) {
