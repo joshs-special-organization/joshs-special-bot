@@ -16,7 +16,7 @@ export const data = new SlashCommandBuilder()
 
 export async function execute(interaction: CommandInteraction) {
     const guild = interaction.guildId as string
-    
+
     if (vcs[guild] == null) {
         return interaction.reply({ content: 'Not in VC' })
     }
