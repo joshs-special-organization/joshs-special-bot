@@ -2,7 +2,7 @@ import client from '../bot'
 import { getMuteEmojiId } from '../functions/emoji-mute-vote'
 
 const TIMEOUT_MINS = 2
-const REACTION_THRESHOLD_COUNT = 3
+const REACTION_THRESHOLD_COUNT = 4
 
 client.on('messageReactionAdd', async (reaction, user) => {
     try {
@@ -23,10 +23,11 @@ client.on('messageReactionAdd', async (reaction, user) => {
             (reaction) => reaction.emoji.id == muteEmojiId
         )?.count // good lord i do NOT miss javascript what the SIGMA is this
 
-        if (reactionCount != REACTION_THRESHOLD_COUNT) {
-            console.log(`Count at ${reactionCount}`)
-            return // you're safe... for now.
-        }
+	if (reactionCount != REACTION_THRESHOLD_COUNT) {
+		console.log(`Count at ${reactionCount}`)
+		return // you're safe... for now.
+	}
+
 
         const member = await reaction.message.member
             ?.timeout(
