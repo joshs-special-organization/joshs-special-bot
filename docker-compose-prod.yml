@@ -5,3 +5,13 @@ services:
     build: .
     container_name: discord-bot
     restart: always
+    networks:
+      mynet:
+        ipv4_address: 172.254.0.2
+
+networks:
+  mynet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.254.0.0/16
