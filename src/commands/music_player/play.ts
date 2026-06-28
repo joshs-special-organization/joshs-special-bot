@@ -153,7 +153,18 @@ export async function playSong(guild) {
             ;(players[guild] as AudioPlayer).play(resource)
             ;(players[guild] as AudioPlayer).unpause()
             ;(channels[guild] as TextBasedChannel).send('NOW PLAYING: ' + title)
-            ;(channels[guild] as TextBasedChannel).send(thumb)
+            
+            const response = await fetch(thumb);
+            const buffer = Buffer.from(await response.arrayBuffer());
+
+            ;(channels[guild] as TextBasedChannel).send({
+                files: [
+                    {
+                        attachment: buffer,
+                        name: "thumbnail.jpg",
+                    },
+                ],
+            });
         } else {
             ;(channels[guild] as TextBasedChannel).send('Added to queue')
         }
