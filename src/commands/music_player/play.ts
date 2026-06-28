@@ -16,7 +16,7 @@ export const data = new SlashCommandBuilder()
 
 export async function execute(interaction: CommandInteraction) {
     const guild = interaction.guildId as string
-    
+
     if (vcs[guild] == null) {
         return interaction.reply({ content: 'Not in VC' })
     }
@@ -36,7 +36,7 @@ export async function execute(interaction: CommandInteraction) {
 
         const instance = config.PIPED_URL ?? 'api.piped.private.coffee'
 
-        fetch('https://' + instance + '/streams/' + videoID)
+        fetch('http://' + instance + '/streams/' + videoID)
             .then((response) => response.json())
             .then((data) => addAudioElement(data, guild))
             .catch((_) => {
@@ -78,10 +78,10 @@ function addAudioElement(data, guild) {
                 console.log(stream['mimeType'])
 
                 const r = data['thumbnailUrl']
-                const rr = r.substring('https://'.length)
+                const rr = r.substring('http://'.length)
                 const rrr = rr.substring(rr.indexOf('/'))
                 const url =
-                    'https://' +
+                    'http://' +
                     (config.PIPED_PROXY_URL ?? 'proxy.piped.private.coffee') +
                     rrr
 

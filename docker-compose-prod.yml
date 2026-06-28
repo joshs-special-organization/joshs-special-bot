@@ -6,12 +6,12 @@ services:
     container_name: discord-bot
     restart: always
     networks:
-      mynet:
-        ipv4_address: 172.254.0.2
+      discord-bot-net:
+        ipv4_address: 10.200.0.2
 
 networks:
-  mynet:
+  discord-bot-net:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.254.0.0/16
+        - subnet: 10.200.0.0/16
