@@ -51,14 +51,20 @@ export async function execute(interaction: CommandInteraction) {
 
 function addAudioElement(data, guild) {
     const streamList = data['audioStreams']
+    streamList.push(data['videoStreams'][0])
+
     if (streamList.length > 0) {
         let qualityList: number[] = []
 
         for (const stream of streamList) {
             const raw = stream['quality']
-            const no = raw.substring(0, raw.length - 5)
+            if (stream["itag"] == 18) {
+                qualityList.push(0)
+            } else {
+                const no = raw.substring(0, raw.length - 5)
 
-            qualityList.push(parseInt(no))
+                qualityList.push(parseInt(no))
+            }
         }
         qualityList = qualityList.sort(function (a, b) {
             return b - a
@@ -67,7 +73,7 @@ function addAudioElement(data, guild) {
         console.log(qualityList)
 
         for (const stream of streamList) {
-            if (stream['quality'] == maxQual + ' kbps') {
+            if (stream['quality'] == maxQual + ' kbps' || (stream['itag'] == 18 && maxQual == 0)) {
                 console.log(stream['url'])
                 console.log(stream['mimeType'])
 
