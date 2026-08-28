@@ -42,3 +42,11 @@ model muteRule {
 
     @@unique([creatorId, guildId])
 }
+
+model dailyKevinMute {
+    guildId   String
+    createdAt DateTime @default(now())
+    creatorId String
+
+    @@id(name: "muteId", [creatorId, guildId])
+}
