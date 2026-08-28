@@ -8,7 +8,7 @@ import { prisma } from '../../prisma-client'
 // https://discordjs.guide/slash-commands/parsing-options.html#subcommands
 // https://discordjs.guide/slash-commands/parsing-options.html#command-options
 
-const KEVIN_USER_ID = "292671711399378944"// "838822808926683136"
+const KEVIN_USER_ID = "838822808926683136"
 
 async function hasMutedToday(guildId: string, userId: string) {
     const record = await prisma.dailyKevinMute.findFirst({
