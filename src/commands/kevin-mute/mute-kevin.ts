@@ -4,17 +4,10 @@ import {
     SlashCommandBuilder,
 } from 'discord.js'
 import { prisma } from '../../prisma-client'
+import { getKevinId } from "./helper"
 
 // https://discordjs.guide/slash-commands/parsing-options.html#subcommands
 // https://discordjs.guide/slash-commands/parsing-options.html#command-options
-
-async function getKevinId(guildId: string) {
-    const record = await prisma.kevinId.findFirst({ 
-        where: { guildId }
-    })
-
-    return record?.kevinId
-}
 
 async function hasMutedToday(guildId: string, userId: string) {
     const record = await prisma.dailyKevinMute.findFirst({

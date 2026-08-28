@@ -4,6 +4,9 @@ import {
     SlashCommandBuilder,
 } from 'discord.js'
 import { prisma } from '../../prisma-client'
+import { isMemberMod } from '../../common_functions'
+import { getKevinId } from './helper'
+
 
 // https://discordjs.guide/slash-commands/parsing-options.html#subcommands
 // https://discordjs.guide/slash-commands/parsing-options.html#command-options
@@ -26,6 +29,25 @@ export async function execute(interaction: ChatInputCommandInteraction) {
 
     if (!member || !guild)
         return interaction.reply({ content: 'uhh uhhmmm uhh', ephemeral: true })
+
+    if (interaction.user?.bot) {
+            return await interaction.reply(
+                'I have created general intelligence'
+            )
+        }
+
+    if (!isMemberMod(interaction.member)) {
+        return await interaction.reply('User is not mod')
+    }
+
+    if (interaction.user.id == "346221699605200907") { // kevins alt
+        return await interaction.reply("nice try lol")
+    }
+
+    if (interaction.user.id == (await getKevinId(guild.id))) { // kevin cannot change the kevin
+        return await interaction.reply("you're not getting out of this one that easy")
+    }
+
 
     await prisma.kevinId.upsert({
             where: {
