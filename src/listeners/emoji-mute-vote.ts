@@ -3,6 +3,10 @@ import { getMuteEmojiId } from '../functions/emoji-mute-vote'
 
 const TIMEOUT_MINS = 2
 const REACTION_THRESHOLD_COUNT = 4
+const NEW_REACTION_THRESHOLD_COUNT = 6
+const RECENT_MUTE_MINS = 10
+
+const lastMutedAt = new Map<string, number>()
 
 client.on('messageReactionAdd', async (reaction, user) => {
     try {
@@ -23,7 +27,20 @@ client.on('messageReactionAdd', async (reaction, user) => {
             (reaction) => reaction.emoji.id == muteEmojiId
         )?.count // good lord i do NOT miss javascript what the SIGMA is this
 
-	if (reactionCount != REACTION_THRESHOLD_COUNT) {
+        const memberKey = `${reaction.message.guild?.id}:${reaction.message.member?.id}`
+        const lastMuted = lastMutedAt.get(memberKey)
+        const recentlyMuted =
+            lastMuted != null &&
+            Date.now() - lastMuted < RECENT_MUTE_MINS * 60 * 1000
+        const threshold = recentlyMuted ? NEW_REACTION_THRESHOLD_COUNT : REACTION_THRESHOLD_COUNT
+
+        if (recentlyMuted && reactionCount === REACTION_THRESHOLD_COUNT) {
+            await reaction.message.reply(
+                `<@${reaction.message.member?.id}> IS NOW IMMUNE FROM MUTEFLATION! — ${NEW_REACTION_THRESHOLD_COUNT} VOTES NOW REQUIRED!`
+            )
+        }
+
+	if (reactionCount != threshold) {
 		console.log(`Count at ${reactionCount}`)
 		return // you're safe... for now.
 	}
@@ -41,6 +58,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
             })
 
         if (member != null) {
+            lastMutedAt.set(memberKey, Date.now())
             await reaction.message.reply(
                 `THIS. IS. DEMOCRACY. MANIFEST.\nThe people have spoken <@${reaction.message.member?.id}>`
             )
