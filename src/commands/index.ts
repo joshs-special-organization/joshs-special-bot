@@ -7,6 +7,7 @@ export * as skip from './music_player/skip'
 export * as stop from './music_player/stop'
 export * as name from './nickname-consensus/name'
 export * as ping from './ping'
-export * as mutekevin from "./kevin-mute"
+export * as mutekevin from "./kevin-mute/mute-kevin"
+export * as setkevin from "./kevin-mute/set-kevin"
 
 export * from './muter'

@@ -50,3 +50,10 @@ model dailyKevinMute {
 
     @@id(name: "muteId", [creatorId, guildId])
 }
+
+model kevinId {
+    guildId String
+    kevinId String 
+
+    @@id([guildId])
+}
