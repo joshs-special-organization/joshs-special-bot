@@ -35,31 +35,38 @@ export async function execute(interaction: ChatInputCommandInteraction) {
     const choseHeads = interaction.options.getBoolean("is_heads") as boolean
     const  _sleep = async(ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
-    if (!member || !guild)
-        return interaction.reply({ content: 'uhh uhhmmm uhh', ephemeral: true })
+    try {
 
-    if (user.user.bot) {
-        return interaction.reply({ content: "cannot mute a bot", ephemeral: true })
+        if (!member || !guild)
+            return interaction.reply({ content: 'uhh uhhmmm uhh', ephemeral: true })
+
+        if (user.user.bot) {
+            return interaction.reply({ content: "cannot mute a bot", ephemeral: true })
+        }
+
+        await interaction.deferReply({ ephemeral: true })
+
+        let isHeadsRoll = Math.random() > 0.5
+        await interaction.channel?.send(`<@${interaction.user.id}> is betting on ${choseHeads ? "heads" : "tails"} to mute <@${user.user.id}>`)
+        await _sleep(5 * 1000) // 5s 
+
+        let coinFlipMessage = await interaction.channel?.send(isHeadsRoll ? coinFlipGifUrls.heads : coinFlipGifUrls.tails)
+        await _sleep(6 * 1000) // takes 6s for the gif
+        await coinFlipMessage?.delete()
+
+        if ((isHeadsRoll && choseHeads) || (!isHeadsRoll && !choseHeads)) { // doesnt show "heads" or "tails" if the user did not specify
+            await user.timeout(5 * 60 * 1000, "5 minute flip coin mute")
+            await interaction.channel?.send(`<@${interaction.user.id}> guessed correctly! <@${user.user.id}> was muted`)
+        } else {
+            await member.timeout(10 * 60 * 1000, "guess wrong lol, 10m mute")
+            await interaction.channel?.send(`<@${interaction.user.id}> didn't guess correctly, goodbye :saluting_face:`)
+        }
+    }
+    catch (err) {
+        console.log("erm...")
+    } finally {
+        await interaction.deleteReply();
     }
 
-    await interaction.deferReply({ ephemeral: true })
-
-    let isHeadsRoll = Math.random() > 0.5
-    await interaction.channel?.send(`<@${interaction.user.id}> is betting on ${choseHeads ? "heads" : "tails"} to mute <@${user.user.id}>`)
-    await _sleep(5 * 1000) // 5s 
-
-    let coinFlipMessage = await interaction.channel?.send(isHeadsRoll ? coinFlipGifUrls.heads : coinFlipGifUrls.tails)
-    await _sleep(6 * 1000) // takes 6s for the gif
-    await coinFlipMessage?.delete()
-
-    if ((isHeadsRoll && choseHeads) || (!isHeadsRoll && !choseHeads)) { // doesnt show "heads" or "tails" if the user did not specify
-        await user.timeout(5 * 60 * 1000, "5 minute flip coin mute")
-         interaction.channel?.send(`<@${interaction.user.id}> guessed correctly! <@${user.user.id}> was muted`)
-    } else {
-        await member.timeout(10 * 60 * 1000, "guess wrong lol, 10m mute")
-         interaction.channel?.send(`<@${interaction.user.id}> didn't guess correctly, goodbye :saluting_face:`)
-    }
-
-    await interaction.deleteReply();
     
 }
