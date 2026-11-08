@@ -1,5 +1,6 @@
 import {
     ChatInputCommandInteraction,
+    escapeHeading,
     GuildMember,
     SlashCommandBuilder,
 } from 'discord.js'
@@ -41,7 +42,7 @@ export async function execute(interaction: ChatInputCommandInteraction) {
         return interaction.reply({ content: "cannot mute a bot", ephemeral: true })
     }
 
-    await interaction.deferReply()
+    await interaction.deferReply({ ephemeral: true })
 
     let isHeadsRoll = Math.random() > 0.5
     await interaction.channel?.send(`<@${interaction.user.id}> is betting on ${choseHeads ? "heads" : "tails"} to mute <@${user.user.id}>`)
@@ -59,6 +60,6 @@ export async function execute(interaction: ChatInputCommandInteraction) {
          interaction.channel?.send(`<@${interaction.user.id}> didn't guess correctly, goodbye :saluting_face:`)
     }
 
-    return ":)"
+    await interaction.deleteReply();
     
 }
