@@ -9,5 +9,6 @@ export * as name from './nickname-consensus/name'
 export * as ping from './ping'
 export * as mutekevin from "./kevin-mute/mute-kevin"
 export * as setkevin from "./kevin-mute/set-kevin"
+export * as flipcoinmute from "./flip-coin-mute/flip-coin-mute"
 
 export * from './muter'
