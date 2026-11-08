@@ -51,7 +51,7 @@ export async function execute(interaction: ChatInputCommandInteraction) {
         await interaction.deferReply({ ephemeral: true })
 
         let isHeadsRoll = Math.random() > 0.5
-        await interaction.channel?.send(`<@${interaction.user.id}> is betting on ${choseHeads ? "heads" : "tails"} to mute <@${user.user.id}>`)
+        await interaction.channel?.send(`<@${interaction.user.id}> is betting on **${choseHeads ? "heads" : "tails"}** to mute <@${user.user.id}>`)
         await _sleep(5 * 1000) // 5s 
 
         let coinFlipMessage = await interaction.channel?.send(isHeadsRoll ? coinFlipGifUrls.heads : coinFlipGifUrls.tails)
