@@ -56,7 +56,7 @@ export async function execute(interaction: ChatInputCommandInteraction) {
          interaction.channel?.send(`<@${interaction.user.id}> guessed correctly! <@${user.user.id}> was muted`)
     } else {
         await member.timeout(10 * 60 * 1000, "guess wrong lol, 10m mute")
-         interaction.channel?.send(`<@${interaction.user.id} didn't guess correctly, goodbye :saluting_face:`)
+         interaction.channel?.send(`<@${interaction.user.id}> didn't guess correctly, goodbye :saluting_face:`)
     }
 
     return ":)"
