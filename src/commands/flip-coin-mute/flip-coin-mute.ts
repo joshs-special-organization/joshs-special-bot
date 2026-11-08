@@ -44,6 +44,10 @@ export async function execute(interaction: ChatInputCommandInteraction) {
             return interaction.reply({ content: "cannot mute a bot", ephemeral: true })
         }
 
+        if (user.user.id == interaction.user.id) {
+            return interaction.reply({ content: "cannot mute yourself", ephemeral: true })
+        }
+
         await interaction.deferReply({ ephemeral: true })
 
         let isHeadsRoll = Math.random() > 0.5
