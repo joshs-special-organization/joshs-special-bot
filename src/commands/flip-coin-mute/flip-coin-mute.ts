@@ -12,6 +12,8 @@ const coinFlipGifUrls = {
     heads: "https://host.jeynes.uk/jsb/xJhpXr08nkoAAAAd.gif",
 }
 
+const activeUserCalls = new Set();
+
 export const data = new SlashCommandBuilder()
     .setName('flipcoinmute')
     .setDescription("Mute someone (5m) or yourself (10m)")
@@ -34,8 +36,20 @@ export async function execute(interaction: ChatInputCommandInteraction) {
     const user = interaction.options.getMember("user") as GuildMember
     const choseHeads = interaction.options.getBoolean("is_heads") as boolean
     const  _sleep = async(ms: number) => new Promise(resolve => setTimeout(resolve, ms))
+    
+    let lockAcquired = false;
 
     try {
+        
+        
+        console.log(activeUserCalls)
+        if (activeUserCalls.has(interaction.user.id)) {
+            console.log("yerp")
+            return interaction.reply({
+                content: 'You already have a command running!',
+                ephemeral: true
+            });
+        }
 
         if (!member || !guild)
             return interaction.reply({ content: 'uhh uhhmmm uhh', ephemeral: true })
@@ -48,7 +62,10 @@ export async function execute(interaction: ChatInputCommandInteraction) {
             return interaction.reply({ content: "cannot mute yourself", ephemeral: true })
         }
 
+        activeUserCalls.add(interaction.user.id)
+        lockAcquired = true;
         await interaction.deferReply({ ephemeral: true })
+
 
 
         let isHeadsRoll = Math.random() > 0.5
@@ -66,11 +83,20 @@ export async function execute(interaction: ChatInputCommandInteraction) {
             await member.timeout(10 * 60 * 1000, "guess wrong lol, 10m mute")
             await interaction.channel?.send(`It landed on **${isHeadsRoll ? "heads" : "tails"}**, not so lucky, goodbye :saluting_face:`)
         }
+
+        activeUserCalls.delete(interaction.user.id)
+
     }
     catch (err) {
-        console.log("erm...")
+        console.log("erm...", err)
     } finally {
-        await interaction.deleteReply();
+        if (lockAcquired) {
+            activeUserCalls.delete(interaction.user.id);
+        }
+    
+        if (interaction.deferred || interaction.replied) {
+            await interaction.deleteReply().catch(console.error);
+        }
     }
 
     
