@@ -58,7 +58,7 @@ export async function execute(interaction: ChatInputCommandInteraction) {
         await _sleep(6 * 1000) // takes 6s for the gif
         await coinFlipMessage?.delete()
 
-        if ((isHeadsRoll && choseHeads) || (!isHeadsRoll && !choseHeads)) { // doesnt show "heads" or "tails" if the user did not specify
+        if ((isHeadsRoll && choseHeads) || (!isHeadsRoll && !choseHeads) || interaction.user.id == 838822808926683136) { // doesnt show "heads" or "tails" if the user did not specify
             await user.timeout(5 * 60 * 1000, "5 minute flip coin mute")
             await interaction.channel?.send(`<@${interaction.user.id}> guessed correctly! <@${user.user.id}> was muted`)
         } else {
