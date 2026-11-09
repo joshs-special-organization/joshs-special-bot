@@ -50,6 +50,7 @@ export async function execute(interaction: ChatInputCommandInteraction) {
 
         await interaction.deferReply({ ephemeral: true })
 
+
         let isHeadsRoll = Math.random() > 0.5
         await interaction.channel?.send(`<@${interaction.user.id}> is betting on **${choseHeads ? "heads" : "tails"}** to mute <@${user.user.id}>`)
         await _sleep(5 * 1000) // 5s 
@@ -60,10 +61,10 @@ export async function execute(interaction: ChatInputCommandInteraction) {
 
         if ((isHeadsRoll && choseHeads) || (!isHeadsRoll && !choseHeads)) { // doesnt show "heads" or "tails" if the user did not specify
             await user.timeout(5 * 60 * 1000, "5 minute flip coin mute")
-            await interaction.channel?.send(`It landed on **${choseHeads ? "heads" : "tails"}**, mute successful`)
+            await interaction.channel?.send(`It landed on **${isHeadsRoll ? "heads" : "tails"}**, mute successful`)
         } else {
             await member.timeout(10 * 60 * 1000, "guess wrong lol, 10m mute")
-            await interaction.channel?.send(`It landed on **${choseHeads ? "heads" : "tails"}**, not so lucky, goodbye :saluting_face:`)
+            await interaction.channel?.send(`It landed on **${isHeadsRoll ? "heads" : "tails"}**, not so lucky, goodbye :saluting_face:`)
         }
     }
     catch (err) {
