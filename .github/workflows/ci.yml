@@ -22,8 +22,9 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - run: npx prisma generate
       - name: tsc (no emit)
-        run: npx tsc --noEmit src/bot.ts
+        run: npx tsc --noEmit
 
   lint:
     name: Lint
@@ -35,6 +36,7 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - run: npx prisma generate
       - run: npm run format:check
       - run: npm run lint:check
 
@@ -49,5 +51,6 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - run: npx prisma generate
       - name: Validate slash command definitions
         run: npx tsx scripts/validate-commands.ts
