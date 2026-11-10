@@ -1,4 +1,4 @@
-import { CommandInteraction, SlashCommandBuilder } from 'discord.js'
+import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js'
 import { isMemberMod } from '../../common_functions'
 import { prisma } from '../../prisma-client'
 
@@ -12,7 +12,7 @@ export const data = new SlashCommandBuilder()
             .setRequired(true)
     )
 
-export async function execute(interaction: CommandInteraction) {
+export async function execute(interaction: ChatInputCommandInteraction) {
     try {
         const { user, value: rawEmojiMessage } = interaction.options.get(
             'emoji',

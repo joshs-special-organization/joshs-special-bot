@@ -1,8 +1,8 @@
 import { AudioPlayer, StreamType, createAudioResource } from '@discordjs/voice'
 import {
-    CommandInteraction,
+    ChatInputCommandInteraction,
+    SendableChannels,
     SlashCommandBuilder,
-    TextBasedChannel,
 } from 'discord.js'
 import { config } from '../../config'
 import { channels, players, queues, statuses, vcs } from '../../functions/dicts'
@@ -11,19 +11,20 @@ export const data = new SlashCommandBuilder()
     .setName('play')
     .setDescription('plays a youtube url')
     .addStringOption((opt) =>
-        opt.setName('tubeurl').setDescription(`A youtube.com url`)
+        opt
+            .setName('tubeurl')
+            .setDescription(`A youtube.com url`)
+            .setRequired(true)
     )
 
-export async function execute(interaction: CommandInteraction) {
+export async function execute(interaction: ChatInputCommandInteraction) {
     const guild = interaction.guildId as string
 
     if (vcs[guild] == null) {
         return interaction.reply({ content: 'Not in VC' })
     }
 
-    const { value: youtubeURL } = interaction.options.get('tubeurl', true) as {
-        value: string
-    }
+    const youtubeURL = interaction.options.getString('tubeurl', true)
 
     // prettier-ignore
     // eslint-disable-next-line
@@ -40,7 +41,7 @@ export async function execute(interaction: CommandInteraction) {
             .then((response) => response.json())
             .then((data) => addAudioElement(data, guild))
             .catch((_) => {
-                ;(channels[guild] as TextBasedChannel).send(
+                ;(channels[guild] as SendableChannels).send(
                     'Unexpected Api Error'
                 )
             })
@@ -49,7 +50,8 @@ export async function execute(interaction: CommandInteraction) {
     }
 }
 
-function addAudioElement(data, guild) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function addAudioElement(data: any, guild: string) {
     const streamList = data['audioStreams']
     streamList.push(data['videoStreams'][0])
 
@@ -58,7 +60,7 @@ function addAudioElement(data, guild) {
 
         for (const stream of streamList) {
             const raw = stream['quality']
-            if (stream["itag"] == 18) {
+            if (stream['itag'] == 18) {
                 qualityList.push(0)
             } else {
                 const no = raw.substring(0, raw.length - 5)
@@ -73,7 +75,10 @@ function addAudioElement(data, guild) {
         console.log(qualityList)
 
         for (const stream of streamList) {
-            if (stream['quality'] == maxQual + ' kbps' || (stream['itag'] == 18 && maxQual == 0)) {
+            if (
+                stream['quality'] == maxQual + ' kbps' ||
+                (stream['itag'] == 18 && maxQual == 0)
+            ) {
                 console.log(stream['url'])
                 console.log(stream['mimeType'])
 
@@ -96,11 +101,11 @@ function addAudioElement(data, guild) {
             }
         }
     } else {
-        ;(channels[guild] as TextBasedChannel).send('Unexpected Streams Error')
+        ;(channels[guild] as SendableChannels).send('Unexpected Streams Error')
     }
 }
 
-export async function playSong(guild) {
+export async function playSong(guild: string) {
     let str
     console.log(statuses[guild])
     if (queues[guild].length > 0) {
@@ -140,7 +145,7 @@ export async function playSong(guild) {
                     str = stream
                 })
                 .catch((_) => {
-                    ;(channels[guild] as TextBasedChannel).send(
+                    ;(channels[guild] as SendableChannels).send(
                         "Could't fetch the audio"
                     )
                 })
@@ -152,24 +157,24 @@ export async function playSong(guild) {
 
             ;(players[guild] as AudioPlayer).play(resource)
             ;(players[guild] as AudioPlayer).unpause()
-            ;(channels[guild] as TextBasedChannel).send('NOW PLAYING: ' + title)
-            
-            const response = await fetch(thumb);
-            const buffer = Buffer.from(await response.arrayBuffer());
+            ;(channels[guild] as SendableChannels).send('NOW PLAYING: ' + title)
 
-            ;(channels[guild] as TextBasedChannel).send({
+            const response = await fetch(thumb)
+            const buffer = Buffer.from(await response.arrayBuffer())
+
+            ;(channels[guild] as SendableChannels).send({
                 files: [
                     {
                         attachment: buffer,
-                        name: "thumbnail.jpg",
+                        name: 'thumbnail.jpg',
                     },
                 ],
-            });
+            })
         } else {
-            ;(channels[guild] as TextBasedChannel).send('Added to queue')
+            ;(channels[guild] as SendableChannels).send('Added to queue')
         }
     } else {
-        ;(channels[guild] as TextBasedChannel).send('Queue empty')
+        ;(channels[guild] as SendableChannels).send('Queue empty')
         ;(players[guild] as AudioPlayer).pause()
         statuses[guild] = 'idle'
     }
