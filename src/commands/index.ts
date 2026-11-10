@@ -10,5 +10,6 @@ export * as skip from './music_player/skip'
 export * as stop from './music_player/stop'
 export * as name from './nickname-consensus/name'
 export * as ping from './ping'
+export * as setbots from './setbots/setbots'
 
 export * from './muter'

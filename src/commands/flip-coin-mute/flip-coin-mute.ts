@@ -3,6 +3,7 @@ import {
     GuildMember,
     SlashCommandBuilder,
 } from 'discord.js'
+import { getBotsChannelId } from '../kevin-mute/helper'
 
 const coinFlipGifUrls = {
     tails: 'https://host.jeynes.uk/jsb/xJhpXrO8nkoAAAAd.gif',
@@ -43,6 +44,23 @@ export async function execute(interaction: ChatInputCommandInteraction) {
             console.log('yerp')
             return interaction.reply({
                 content: 'You already have a command running!',
+                ephemeral: true,
+            })
+        }
+
+        const botsChannelId = await getBotsChannelId(guild?.id ?? "")
+
+        if (!botsChannelId) {
+            return interaction.reply({
+                content:
+                    'No bots channel has been set yet, ask a mod to run /set-bots, m8!',
+                ephemeral: true,
+            })
+        }
+
+        if (interaction.channelId !== botsChannelId) {
+            return interaction.reply({
+                content: `This command can only be used in <#${botsChannelId}>, m8!`,
                 ephemeral: true,
             })
         }

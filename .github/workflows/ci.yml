@@ -52,4 +52,4 @@ jobs:
       - run: npm ci
       - run: npx prisma generate
       - name: Validate slash command definitions
-        run: npx tsx scripts/validate-commands.ts
+        run: npx tsx --env-file=.env.test scripts/validate-commands.ts

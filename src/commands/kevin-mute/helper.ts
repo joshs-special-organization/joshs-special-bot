@@ -7,3 +7,8 @@ export async function getKevinId(guildId: string) {
 
     return record?.kevinId
 }
+
+export async function getBotsChannelId(guildId: string) {
+    const row = await prisma.botsChannel.findUnique({ where: { guildId } })
+    return row?.channelId ?? null
+}
