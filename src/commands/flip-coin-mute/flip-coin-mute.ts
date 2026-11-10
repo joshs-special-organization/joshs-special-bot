@@ -48,7 +48,7 @@ export async function execute(interaction: ChatInputCommandInteraction) {
             })
         }
 
-        const botsChannelId = await getBotsChannelId(guild?.id ?? "")
+        const botsChannelId = await getBotsChannelId(guild?.id ?? '')
 
         if (!botsChannelId) {
             return interaction.reply({

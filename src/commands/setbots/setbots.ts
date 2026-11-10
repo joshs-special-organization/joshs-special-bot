@@ -9,7 +9,7 @@ import { prisma } from '../../prisma-client'
 
 export const data = new SlashCommandBuilder()
     .setName('setbots')
-    .setDescription("Set the #bots channel for this server")
+    .setDescription('Set the #bots channel for this server')
     .addChannelOption((option) =>
         option
             .setName('channel')
