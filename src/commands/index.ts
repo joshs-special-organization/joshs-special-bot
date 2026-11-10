@@ -1,14 +1,15 @@
 // Type "SETUP" in the guild to update the commands
 
 export * as setmuteemoji from './emoji-mute-vote/set-mute-emoji'
+export * as flipcoinmute from './flip-coin-mute/flip-coin-mute'
+export * as mutekevin from './kevin-mute/mute-kevin'
+export * as setkevin from './kevin-mute/set-kevin'
 export * as join from './music_player/join'
 export * as play from './music_player/play'
 export * as skip from './music_player/skip'
 export * as stop from './music_player/stop'
 export * as name from './nickname-consensus/name'
 export * as ping from './ping'
-export * as mutekevin from "./kevin-mute/mute-kevin"
-export * as setkevin from "./kevin-mute/set-kevin"
-export * as flipcoinmute from "./flip-coin-mute/flip-coin-mute"
+export * as setbots from './setbots/setbots'
 
 export * from './muter'

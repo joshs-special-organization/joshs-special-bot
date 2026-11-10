@@ -57,3 +57,8 @@ model kevinId {
 
     @@id([guildId])
 }
+
+model botsChannel {
+  guildId   String @id
+  channelId String
+}

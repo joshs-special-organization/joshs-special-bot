@@ -13,7 +13,7 @@ export async function deployCommands(guildId: string | null) {
             return
         }
         console.log(data)
-        console.log(commandsData.map(e => e.name))
+        console.log(commandsData.map((e) => e.name))
         console.log('Started refreshing application (/) commands.')
 
         await rest.put(

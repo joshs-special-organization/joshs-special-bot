@@ -32,4 +32,5 @@ export default [
             'jest/valid-expect': 'error',
         },
     },
+    { ignores: ['scripts/*', 'node_modules/*'] },
 ]

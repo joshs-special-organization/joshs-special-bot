@@ -1,4 +1,4 @@
-import { CommandInteraction, SlashCommandBuilder, User } from 'discord.js'
+import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js'
 import { userHasRuleCreated } from '../../functions'
 import { prisma } from '../../prisma-client'
 
@@ -23,7 +23,7 @@ export const data = new SlashCommandBuilder()
             .setMinLength(MIN_RULE_LENGTH)
     )
 
-export async function execute(interaction: CommandInteraction) {
+export async function execute(interaction: ChatInputCommandInteraction) {
     if (
         await userHasRuleCreated(
             interaction.user.id,
@@ -37,10 +37,8 @@ export async function execute(interaction: CommandInteraction) {
         })
 
     try {
-        const { user } = interaction.options.get('user', true) as { user: User }
-        const { value } = interaction.options.get('phrase', true) as {
-            value: string
-        }
+        const user = interaction.options.getUser('user', true)
+        const value = interaction.options.getString('phrase', true)
 
         if (user.bot) {
             return interaction.reply({
